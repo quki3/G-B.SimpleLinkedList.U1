@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Data Structures-Linked list simple</h1>
+    <p>An linked list are data structure very similar to a arrays, where the access to the element or node <br>
+         is through a pointer instead of the index or key
+        <br>
+        <br>
+        #1
+        HEAD => THIS.HEAD => NULL/or/NODE => THIS.DATA; <br>
+        &emsp;&emsp;&emsp; &emsp;&emsp; THIS.SIZE = 0; &emsp;&emsp; &emsp; &emsp; &emsp;&emsp;&emsp;&emsp;THIS.NEXT => NULL/or/NODE =>etc.etc.ect
+        <br>
+        <br>
+        <h2>one form</h2>
+        cass Node{ <br>
+            &emsp;constructor(data,next){<br>
+                &emsp;&emsp;  this.data = data; <br>
+                &emsp;&emsp; this.next = next;<br>
+                &emsp;  }; <br>
+        }; <br>
+        <br>
+        class Linkedlist { <br>
+            &emsp;constructor(){ <br>
+            &emsp;&emsp;this.head = null; <br>
+            &emsp;&emsp;this.size = 0; <br>
+            &emsp;};<br>
+        };
+        <br>
+        <br>
+        <h2>another form</h2>
+        function Node (value) { <br>
+            &emsp; this.value = value <br>
+            &emsp; this.next = null <br>
+          } <br>
+          <br>
+          function LinkedList() { <br>
+            &emsp; this.head = null <br>
+          } <br>
+        <br>
+          something interzing from the lists that it can be as an advantage over arrays for example if we add a new <br>
+        element in an array it wil verify that there is a contiguous memory space available for the new element and if <br>
+        it has not moved the entire array to another place in memory where if there is a full space, this does not happen <br>
+        with the list, items may be scattered in memory <br>
+        <br>
+        we can play a little bit with these kinds of structures <br>
+        <br>
+        adding nodes to the list <br>
+        look at #1 above on the page watch as head joins the nodes think a little bit how it works
+
+
+
+    </p>
+</body>
+</html>
