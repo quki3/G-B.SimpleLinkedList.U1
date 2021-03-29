@@ -52,6 +52,119 @@
         <br>
         adding nodes to the list <br>
         look at #1 above on the page watch as head joins the nodes think a little bit how it works
+        for this situation we have to look for the node whose next is null(that means  that an the node I'm standing on is the last one) <br>
+        and it's important to highlight this that the 'next' is null ... remember that nodes only know  <br>
+        their predecessor, so if we were standing in null we can't meke the old one poin to new node !. so we'll step back and  <br>
+        reassigned node.next, now yes, toward the new node.<br>
+        <br>
+        <h3>Add Node at End (append) one form</h3>
+        <br>
+        LinkedList.prototype.append = function(value, current = this.head){ <br>
+          &emsp; if(this.head === null){ <br>
+            &emsp;&emsp;return this.head = new Node(value) <br>
+            &emsp;} <br>
+            &emsp; if(current.next === null){ <br>
+              &emsp; &emsp;return current.next = new Node(value) <br>
+              &emsp;} <br>
+              &emsp;&emsp; this.append(value, current.next) <br>
+        } <br>
+        <br>
+        <h3>Another form</h3>
+        add(data){<br>
+          &emsp;const newNode = new Node(data,null); <br>
+          &emsp;if(!this.head){ <br>
+            &emsp;&emsp;this.head = newNode <br>
+            &emsp; }else{ <br>
+              &emsp;&emsp;let current = this.head; <br>
+              &emsp;&emsp;while(current.next){ <br>
+                &emsp;&emsp;&emsp;current = current.next; <br>
+                &emsp;&emsp;}; <br>
+              &emsp;this.size++ <br>
+              &emsp;}; <br>
+        }; <br>
+        <br>
+        <br>
+        <h3>Add node to beginning</h3>
+        In this particular case the important thing is, first create the new node and then point it to what points head finally <br>
+         head reassigb it to the new node. <br>
+         if we did it in reverse, that is, firt we put the head assignment to the new node, we lose the reference of the rest of the nodes <br>
+         <br>
+          <h3>one form</h3>
+          LinkedList.prototype.prepend = function(value){ <br>
+            &emsp;if(this.head === null){ <br>
+              &emsp;&emsp;return this.head = new Node(value) <br>
+              &emsp;} <br>
+              &emsp;let newNode = new Node(value) <br>
+              &emsp;newNode.next = this.head <br>
+              &emsp; this.head = newNode <br>
+          } <br>
+          <br>
+          <h3>Removing nodes to the list</h3>
+          the simplest case is to want to delete the first element, in that case head points to head.next <br>
+          now to delete any other items, the first thing is to locate the node before the searched one(that we do asking for next)and point <br>
+           that node the next from which we wnt to delete <br>
+           <br>
+           <h3>One form  whit recursive</h3>
+           LinkedList.prototype.removeNode = function (value, current = this.head) { <br>
+            &emsp;    if(this.head === null){ // no head <br>
+              &emsp;&emsp;      return false <br>
+
+              &emsp;    } <br>
+      <br>    
+      &emsp;      if (this.head.value === value){ <br>
+        &emsp;&emsp;        return this.head = this.head.next <br>
+        &emsp;      } <br>
+      <br>    
+      &emsp;      if(current.next !== null){ <br>
+        &emsp;&emsp;        if(current.next.value === value){ <br>
+          &emsp;&emsp;&emsp;          return current.next = current.next.next <br>
+          &emsp;       } <br>
+          &emsp;&emsp;        this.removeNode(value, current.next) <br>
+          &emsp;      } <br>
+          &emsp;&emsp;      return false // no match found <br>
+          } <br>
+          <br>
+          <br>
+          <h3>looking for a node</h3>
+          there's not much to explain .. if it matches the item it returns true , <br>
+           if it reaches the end of the list (NULL) the item does not exist and returns false. <br>
+           <br>
+           <h3>one from with recursive</h3>
+           <br>
+           <br>
+           LinkedList.prototype.findNode = function (value, current = this.head){ <br>
+            &emsp;if(this.head === null) { <br>
+              &emsp;&emsp;  return false <br>
+              &emsp;} <br>
+          <br>
+          &emsp;if (current !== null) { <br>
+            &emsp; &emsp;if (current.value === value){ <br>
+              &emsp; &emsp;&emsp;  return true <br>
+              &emsp;&emsp;} else { <br>
+                &emsp;  &emsp;&emsp; return this.findNode(value, current.next) <br>
+                &emsp;  &emsp;} <br>
+
+                &emsp;} <br>
+                &emsp;&emsp;return false <br>
+          } <br>
+          <br>
+          <br>
+          <h3>long list</h3>
+          <br>
+          LinkedList.prototype.length = function (current = this.head, acum = 1) { <br>
+            &emsp; if(this.head === null){ <br>
+              &emsp;&emsp; return 0 <br>
+              &emsp; } <br>
+              &emsp; if (current.next !== null){ <br>
+                &emsp;&emsp;  return this.length(current.next, acum = acum + 1) <br>
+                &emsp; } <br>
+                &emsp;   return acum <br>
+          } <br>
+          <br>
+          <br>
+
+
+
 
 
 
