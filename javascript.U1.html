@@ -100,6 +100,8 @@
           } <br>
           <br>
           <h3>Removing nodes to the list</h3>
+
+
           the simplest case is to want to delete the first element, in that case head points to head.next <br>
           now to delete any other items, the first thing is to locate the node before the searched one(that we do asking for next)and point <br>
            that node the next from which we wnt to delete <br>
@@ -124,6 +126,34 @@
           &emsp;&emsp;      return false // no match found <br>
           } <br>
           <br>
+          <h3>Removing nodes to the list through position</h3>
+          LinkedList.prototype.removeFromPos = function(pos,current = this.head,i=0){ <br>
+            
+            &emsp;if(this.head === null){  <br>
+                &emsp;&emsp; return false <br>
+            &emsp;} <br>
+                
+            &emsp;if (i === pos){ <br>
+              &emsp;&emsp;  var aux = this.head.value; <br>
+              &emsp;&emsp; this.head = this.head.next <br>
+              &emsp;&emsp;  return aux; <br>
+            &emsp;} <br>
+          
+              
+            &emsp;i++ <br>
+                &emsp;if(current!==null){  <br>
+                  &emsp;&emsp;  if(i === pos){ <br>
+                      &emsp;&emsp;&emsp;  let aux = current.next.value; <br>
+                    &emsp; &emsp; &emsp;&emsp;&emsp;&emsp;current.next = current.next.next <br>
+                    &emsp; &emsp;&emsp; &emsp;&emsp;&emsp;return aux; <br>
+                     &emsp;&emsp;&emsp; } <br>
+                       this.removeFromPos(pos, current =current.next,i) <br>
+                      } <br>
+                       return false <br>
+              } <br>
+
+
+
           <br>
           <h3>looking for a node</h3>
           there's not much to explain .. if it matches the item it returns true , <br>
